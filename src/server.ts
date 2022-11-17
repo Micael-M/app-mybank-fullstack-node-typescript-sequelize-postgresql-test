@@ -1,10 +1,7 @@
-import "reflect-metadata"
-import express from "express"
 require('dotenv').config();
 
-const PORT = 3000 || process.env.PORT
-
-const app = express();
+const app = require('./app')
+const PORT = 3002 || process.env.PORT
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`)

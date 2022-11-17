@@ -1,14 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
   const AccountModel = sequelize.define('Account', {
     id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
+      allowNull: false,
       autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
     },
     balance: {
-      type: DataTypes.INTEGER,
       defaultValue: 10000,
       allowNull: false,
+      type: DataTypes.INTEGER,
     },
   });
   return AccountModel;
