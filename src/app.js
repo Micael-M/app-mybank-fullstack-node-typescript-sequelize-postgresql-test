@@ -1,10 +1,11 @@
 const express = require('express');
-const accountController = require('./controllers/accountController');
+
+const { login } = require('./routes');
 
 const app = express();
 app.use(express.json());
 
 // Routes
-app.get('/accounts', accountController.getAllAccounts);
+app.use(login);
 
 module.exports = app;
