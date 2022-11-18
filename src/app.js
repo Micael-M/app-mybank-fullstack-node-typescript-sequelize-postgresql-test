@@ -1,5 +1,5 @@
 const express = require('express');
-const accountController = require('./database/controllers/accountController');
+const accountController = require('./controllers/accountController');
 
 const app = express();
 app.use(express.json());

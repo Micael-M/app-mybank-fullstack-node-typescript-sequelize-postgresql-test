@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const AccountModel = sequelize.define('Account', {
+  const Account = sequelize.define('Account', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -12,5 +12,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
   });
-  return AccountModel;
+
+  Account.associate = (models) => {
+    Account.hasOne(models.User, { foreignKey: 'accountId', as: 'Users' });
+  };
+
+  return Account;
 };
