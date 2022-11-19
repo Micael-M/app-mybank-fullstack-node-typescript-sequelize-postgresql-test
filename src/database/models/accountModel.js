@@ -7,10 +7,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
     balance: {
-      defaultValue: 10000,
+      // defaultValue: 10000,
       allowNull: false,
       type: DataTypes.INTEGER,
     },
+  },
+  {
+    timestamps: false,
   });
 
   Account.associate = (models) => {
