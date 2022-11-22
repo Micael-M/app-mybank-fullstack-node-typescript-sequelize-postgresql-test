@@ -1,10 +1,12 @@
 const express = require('express');
-const accountController = require('./database/controllers/accountController');
+
+const { login, transaction } = require('./routes');
 
 const app = express();
 app.use(express.json());
 
 // Routes
-app.get('/accounts', accountController.getAllAccounts);
+app.use(login);
+app.use(transaction);
 
 module.exports = app;

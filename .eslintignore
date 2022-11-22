@@ -3,4 +3,4 @@ node_modules
 /tests
 **/migrations/
 **/seeders/
-**/models/index.js
+**/models/
