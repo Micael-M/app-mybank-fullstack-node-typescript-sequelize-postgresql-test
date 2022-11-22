@@ -2,7 +2,7 @@
   "name": "my_bank",
   "version": "1.0.0",
   "description": "aplicativo de finanças pessoais",
-  "main": "src/server.ts",
+  "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
