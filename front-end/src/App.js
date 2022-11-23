@@ -1,17 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Switch } from 'react-router-dom';
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
-function App() {
+const Private = (props) => {
+  console.log(props.location.pathname);
+  const logged = false;
+  return logged > 0 ? <Home /> : <Login />;
+};
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    </div>
+    <Switch>
+      {/* <Route exact path="/" render={(props) => <Private {...props} />} /> */}
+      {/* <Route exact path="/login" render={(props) => <Login {...props} />} /> */}
+      <Route exact path="/register" render={(props) => <Register {...props} />} />
+      {/* <Route exact path="/" element={ <Navigate to="/login" />}/>  */}
+      {/* <Route exact path="/login" component={Private} /> */}
+      {/* <Route exact path="/transations" component={Private} /> */}
+      {/* <Route path="/register" component={Register} /> */}
+      <Route path="*" render={(props) => <Private {...props} />} />
+    </Switch>
   );
-}
+};
 
 export default App;
