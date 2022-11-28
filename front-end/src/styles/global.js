@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+export const Global = createGlobalStyle`
 
   * {
     box-sizing: border-box;
@@ -9,11 +9,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: #f0f2f5;
-    font-family: Arial, Helvetica, sans-serif;
-    height: 100vh;
-    width: 100vw;
+    font-family: 'Poppins', sans-serif;
+    /* background-color: #f2f2f2; */
   }
 `;
-
-export default GlobalStyle;

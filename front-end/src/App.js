@@ -1,28 +1,19 @@
 import React from "react";
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { RequireAuth } from './contexts/RequireAuth.js';
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import { Register } from "./pages/Register";
+import { Global } from "./styles/global.js";
 
-const Private = (props) => {
-  console.log(props.location.pathname);
-  const logged = false;
-  return logged > 0 ? <Home /> : <Login />;
-};
-
-const App = () => {
+export const App = () => {
+  console.log('Cheguei no app');
   return (
     <Switch>
-      {/* <Route exact path="/" render={(props) => <Private {...props} />} /> */}
-      {/* <Route exact path="/login" render={(props) => <Login {...props} />} /> */}
-      <Route exact path="/register" render={(props) => <Register {...props} />} />
-      {/* <Route exact path="/" element={ <Navigate to="/login" />}/>  */}
-      {/* <Route exact path="/login" component={Private} /> */}
-      {/* <Route exact path="/transations" component={Private} /> */}
-      {/* <Route path="/register" component={Register} /> */}
-      <Route path="*" render={(props) => <Private {...props} />} />
+      <Route exact path="/" render={() => <RequireAuth ><Home /></RequireAuth>} />
+      <Route  path="/register" render={() => <Register />} />
+      <Route  path="/login" >{ <Redirect to='/'/> }</Route>
+      <Route path="*">{ <Redirect to='/'/> }</Route>
+      <Global />
     </Switch>
   );
 };
-
-export default App;
