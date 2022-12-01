@@ -1,19 +1,26 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
+import React, { useEffect, useState } from 'react';
 import { Section } from './styles';
 import { Header } from '../../components/Header'
 import { Resume } from '../../components/Resume';
 import { Transaction } from '../../components/Transaction';
+import { useAuth } from '../../contexts/AuthProvider';
 
 const Home = () => {
-  const auth = useContext(AuthContext) // utilizar userLogin()
+  const [userData, setUserData] = useState(null);
+  const auth = useAuth();
   const handleLogout = () => auth.userLogout();
+
+  useEffect(() => {
+    const getUserInStorage = localStorage.getItem('mc_user');
+    setUserData(JSON.parse(getUserInStorage));
+    console.log(userData);
+  }, []);
 
   return (
     <>
       <Section>
         <Header />
-        <Resume />
+        <Resume data={userData?.balance}/>
         <Transaction data={auth.transactions}/>
         {auth.user && <button name="btn_signout" onClick={handleLogout}>Sair</button>}
       </Section>

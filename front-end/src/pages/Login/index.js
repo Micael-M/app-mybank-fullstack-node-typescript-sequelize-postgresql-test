@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
-// import * as C from './styles';
-// import { Button } from "../../components/Button";
+import React, { useEffect, useState } from "react";
+import { useAuth } from "../../contexts/AuthProvider";
 
 export const Login = () => {
 
-  const auth = useContext(AuthContext); // utilizar userLogin()
+  const auth = useAuth();
 
   console.log('Cheguei no Login');
 
@@ -26,7 +24,8 @@ export const Login = () => {
         console.log(isLogged);
       }
     } catch {
-      return setHidden(false);
+      setHidden(false);
+      return;
     }
   };
 

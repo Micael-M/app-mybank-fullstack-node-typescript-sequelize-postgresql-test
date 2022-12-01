@@ -19,10 +19,8 @@ export const useApi = () => ({
 
   validateToken: async (token) => {
     console.log('No validate token');
-    console.log(token);
     const { data } = await api.post('/validate', {token});
     console.log('Passou da validate token');
-    console.log(data);
     return data;
   },
 
@@ -30,14 +28,12 @@ export const useApi = () => ({
     console.log('No getTransactions');
     const { data } = await api.post('/transactions', {id, who});
     console.log('Passou da getTransactions');
-    console.log(data);
     return data;
   },
 
-  createTransaction: async (idDebited, credited, value) => {
+  createTransaction: async (debitedAccountId, creditedName, value) => {
     console.log('No createTransaction');
-    const resultCreate = await api.post('/transaction', {idDebited, credited, value});
-    console.log('transferencia com sucesso');
+    const resultCreate = await api.post('/transaction', {debitedAccountId, creditedName, value});
     return resultCreate;
   },
 });
