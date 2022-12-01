@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [dataUser, setDataUser] = useState(null);
   const [transactions, setTransactions] = useState([]);
-  const [isLoading, setisLoading] = useState([]);
+  // const [isLoading, setisLoading] = useState([]);
   const api = useApi();
 
   const tokenValidate = async () => {
