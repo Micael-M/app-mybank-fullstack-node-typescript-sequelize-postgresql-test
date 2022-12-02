@@ -16,9 +16,8 @@ export const AuthProvider = ({ children }) => {
     const getUserStorage = JSON.parse(localStorage.getItem('mc_user'));
     if (getStorageToken) {
       setUser(getStorageToken);
-      setDataUser(getUserStorage)      
+      setDataUser(getUserStorage);
       const validateToken = await api.validateToken(getStorageToken);
-      console.log(validateToken.username);
       if (validateToken.username) setUser(validateToken);
     }
   };
@@ -27,8 +26,6 @@ export const AuthProvider = ({ children }) => {
     console.log('Rodei useEffect do provider');
     tokenValidate() }, []);
 
-  // const setTokenInStorage = (token) => localStorage.setItem('mc_token', JSON.stringify(token));
-  // const setUserInStorage = (token) => localStorage.setItem('mc_user', JSON.stringify(token));
   const setIDataInStorage = (key, data) => localStorage.setItem(key, JSON.stringify(data));
 
 
@@ -53,16 +50,15 @@ export const AuthProvider = ({ children }) => {
   const getTransactions = async (who) => {
     const resultFindAll = await api.getTransactions(user.id, who);
     if (resultFindAll) setTransactions(resultFindAll);
-    console.log('Provider - getTransactions');
-    console.log('Provider - getTransactions');
     return resultFindAll;
   };
 
   const createTransaction = async (idDebited, credited, value) => {
-    console.log('No createTramsaction');
-    const resultCreate = await api.createTransaction(idDebited, credited, value);
-    console.log('transferencia com sucesso');
-    return resultCreate;
+    const amount = value * 100 // transforemar em centavos
+    const { data } = await api.createTransaction(idDebited, credited, amount);
+    setIDataInStorage('mc_user', data.resultUser);
+    tokenValidate();
+    return true;
   };
 
 

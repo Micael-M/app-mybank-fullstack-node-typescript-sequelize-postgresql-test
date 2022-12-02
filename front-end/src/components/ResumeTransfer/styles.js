@@ -50,6 +50,13 @@ export const Button = styled.button`
   text-decoration: none;
   width: 100%;
   text-align: center;
+  &:active {
+    background-color: #534fd6;
+  }
+  &:disabled {
+    cursor: default;
+    opacity: 0.7;
+  }
 `;
 
 export const Transfer = styled.div`

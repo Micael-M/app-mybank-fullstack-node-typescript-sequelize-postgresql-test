@@ -13,13 +13,12 @@ export const Transfer = ({ title, type, placeholder, data }) => {
   };
 
   const handleClick = async () => {
-    if (amount > 0 && amount <= data.balance && creditedName !== data.username) {
+    if (amount > 0 && amount <= data.balance && creditedName !== data.username && creditedName.length > 0) {
       await auth.createTransaction(data.id, creditedName, amount);
       return;
     }
     alert('Não foi possível fazer a transferência!');
   };
-
   return (
     <C.Container>
       <C.Header>

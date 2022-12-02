@@ -2,8 +2,8 @@ const { Transaction, User } = require('../database/models');
 const loginService = require('./loginService');
 
 const updateBalance = async (debitedAccountId, creditedAccountId, value) => {
-  await loginService.getUserBalance(debitedAccountId, creditedAccountId, value);
-  return true;
+  const result = await loginService.getUserBalance(debitedAccountId, creditedAccountId, value);
+  return result;
 };
 
 const create = async (dataTransaction) => {
@@ -11,9 +11,9 @@ const create = async (dataTransaction) => {
   const findUserId = await User.findOne({ where: { username: creditedName } });
   if (findUserId) {
     const creditedAccountId = findUserId.id;
-    const resultCreate = await Transaction.create({ debitedAccountId, creditedAccountId, value });
-    await updateBalance(debitedAccountId, creditedAccountId, value);
-    return { status: 201, resultCreate };
+    await Transaction.create({ debitedAccountId, creditedAccountId, value });
+    const resultUpdate = await updateBalance(debitedAccountId, creditedAccountId, value);
+    return { status: 201, resultUpdate };
   }
   return { status: 404, menssage: 'User not found!' };
 };

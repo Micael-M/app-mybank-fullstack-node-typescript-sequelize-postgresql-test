@@ -9,6 +9,20 @@ const getBalanceById = async (userId) => {
   return balance;
 };
 
+const getUserById = async (id) => {
+  const findUser = await User.findOne({ where: { id } });
+  const balance = await getBalanceById(findUser.accountId);
+
+  const resultUser = {
+    id: findUser.id,
+    username: findUser.username,
+    accountId: findUser.accountId,
+    balance,
+    // token: token.generate(findUser.id, findUser.username),
+  };
+  return { status: 200, resultUser };
+};
+
 const login = async (username, password) => {
   const findUser = await User.findOne({ where: { username } });
 
@@ -71,8 +85,8 @@ const updateBalance = async (debitedAccountId, creditedAccountId, value) => {
 
 const getUserBalance = async (debitedAccountId, creditedAccountId, value) => {
   await updateBalance(debitedAccountId, creditedAccountId, value);
-  await User.findOne();
-  return true;
+  const getUser = await getUserById(debitedAccountId);
+  return getUser;
 };
 
 module.exports = {
