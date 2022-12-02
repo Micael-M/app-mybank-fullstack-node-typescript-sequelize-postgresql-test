@@ -1,8 +1,9 @@
 import React from "react";
 
-export const Register = () => {
-  console.log('Cheguei no Register');
+const Register = () => {
   return (
     <div>Register</div>
   )
 }
+
+export default Register
