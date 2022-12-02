@@ -4,9 +4,23 @@ const token = require('../utils/token');
 
 const BALANCE_DEFAULT = 10000; // Equivalente à R$ 100,00
 
-const getAccountById = async (userId) => {
+const getBalanceById = async (userId) => {
   const { balance } = await Account.findOne({ where: { id: userId } });
   return balance;
+};
+
+const getUserById = async (id) => {
+  const findUser = await User.findOne({ where: { id } });
+  const balance = await getBalanceById(findUser.accountId);
+
+  const resultUser = {
+    id: findUser.id,
+    username: findUser.username,
+    accountId: findUser.accountId,
+    balance,
+    // token: token.generate(findUser.id, findUser.username),
+  };
+  return { status: 200, resultUser };
 };
 
 const login = async (username, password) => {
@@ -18,7 +32,7 @@ const login = async (username, password) => {
     return { status: 401, message: 'Unauthorized user' }; // Conforme RFC 7235
   }
 
-  const balance = await getAccountById(findUser.accountId);
+  const balance = await getBalanceById(findUser.accountId);
 
   const resultLogin = {
     id: findUser.id,
@@ -48,7 +62,35 @@ const register = async (username, password) => {
   return { status: 201, resultUser };
 };
 
+const updateBalance = async (debitedAccountId, creditedAccountId, value) => {
+  const creditedBalance = await getBalanceById(creditedAccountId);
+  const debitedBalance = await getBalanceById(debitedAccountId);
+  if (creditedBalance < 0) {
+    const convert = creditedBalance * (-1);
+
+    const creditBalance = convert + value;
+    const debitBalance = debitedBalance - value;
+
+    await Account.update({ balance: creditBalance }, { where: { id: 5 } });
+    await Account.update({ balance: debitBalance }, { where: { id: 6 } });
+    return;
+  }
+  const creditBalance = creditedBalance + value;
+  const debitBalance = debitedBalance - value;
+
+  await Account.update({ balance: creditBalance }, { where: { id: creditedAccountId } });
+  await Account.update({ balance: debitBalance }, { where: { id: debitedAccountId } });
+  return true;
+};
+
+const getUserBalance = async (debitedAccountId, creditedAccountId, value) => {
+  await updateBalance(debitedAccountId, creditedAccountId, value);
+  const getUser = await getUserById(debitedAccountId);
+  return getUser;
+};
+
 module.exports = {
   login,
   register,
+  getUserBalance,
 };
