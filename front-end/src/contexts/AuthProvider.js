@@ -16,8 +16,7 @@ export const AuthProvider = ({ children }) => {
     const getUserStorage = JSON.parse(localStorage.getItem('mc_user'));
     if (getStorageToken) {
       setUser(getStorageToken);
-      setDataUser(getUserStorage)
-      
+      setDataUser(getUserStorage)      
       const validateToken = await api.validateToken(getStorageToken);
       console.log(validateToken.username);
       if (validateToken.username) setUser(validateToken);

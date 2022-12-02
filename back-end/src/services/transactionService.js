@@ -15,6 +15,7 @@ const create = async (dataTransaction) => {
     await updateBalance(debitedAccountId, creditedAccountId, value);
     return { status: 201, resultCreate };
   }
+  return { status: 404, menssage: 'User not found!' };
 };
 
 module.exports = {

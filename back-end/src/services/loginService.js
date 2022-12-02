@@ -71,6 +71,7 @@ const updateBalance = async (debitedAccountId, creditedAccountId, value) => {
 
 const getUserBalance = async (debitedAccountId, creditedAccountId, value) => {
   await updateBalance(debitedAccountId, creditedAccountId, value);
+  await User.findOne();
   return true;
 };
 
