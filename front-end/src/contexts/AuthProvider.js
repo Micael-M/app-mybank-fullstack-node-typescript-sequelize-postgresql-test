@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const getTransactions = async (who) => {
-    const resultFindAll = await api.getTransactions(user.id, who);
+    const resultFindAll = await api.getTransactions(dataUser.id, who);
     if (resultFindAll) setTransactions(resultFindAll);
     return resultFindAll;
   };

@@ -9,7 +9,7 @@ export const GridItem = ({ item, transaction }) => {
   return (
     <C.Tr>
       <C.Td>{transaction === 'credited' ?
-        item.debitedAccountId : item.creditedAccountId}</C.Td>
+        item.creditedAccountId : item.debitedAccountId}</C.Td>
       <C.Td alignCenter>{item.createdAt}</C.Td>
       <C.Td alignCenter>
         <span>R$: {item.value/100}  </span>
