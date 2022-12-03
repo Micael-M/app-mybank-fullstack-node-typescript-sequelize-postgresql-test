@@ -78,7 +78,6 @@ export const Transfer = styled.div`
   margin: 10px 0;
   outline: none;
   padding: 10px 5px;
-  /* text-decoration: none; */
   width: ${(props) => (props.width ? props.width + "%" : "auto")};
   text-align: center;
 `;

@@ -19,9 +19,6 @@ export const GridItem = ({ item, transaction }) => {
           <FaRegArrowAltCircleUp color="red" />
         )}
       </C.Td>
-      {/* <C.Td alignCenter> */}
-      {/* <FaTrash onClick={() => onDelete(item.id)} /> */}
-      {/* </C.Td> */}
     </C.Tr>
   );
 };

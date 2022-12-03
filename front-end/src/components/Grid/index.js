@@ -3,11 +3,6 @@ import { GridItem } from '../GridItem';
 import * as C from './styles';
 
 export const Grid = ({ data , transaction}) => {
-  // const onDelete = (ID) => {
-  //   const newArray = itens.filter((transaction) => transaction.id !== ID);
-  //   setItens(newArray);
-  //   localStorage.setItem("transactions", JSON.stringify(newArray));
-  // };
 
   return (
     <C.Table>

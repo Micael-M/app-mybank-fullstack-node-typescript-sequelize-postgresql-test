@@ -73,25 +73,13 @@ export const Input = styled.input`
   height: 40px;
   line-height: 10px;
   outline: none;
-  /* padding: 10px 5px; */
-  /* text-decoration: none; */
-  width: 40%;
   text-align: center;
+  width: 40%;
 `;
 
 export const Hr = styled.hr`
-  /* border-radius: 5px; */
-  /* align-items: center; */
   border: 1px solid #c4c4c4;
   color: #939393;
-  /* font-size: 20px; */
   margin: 30px auto;
-  /* font-weight: 400; */
-  /* line-height: 10px; */
-  /* height: 40px; */
-  /* outline: none; */
-  /* padding: 10px 5px; */
-  /* text-decoration: none; */
   width: 90%;
-  /* text-align: center; */
 `;

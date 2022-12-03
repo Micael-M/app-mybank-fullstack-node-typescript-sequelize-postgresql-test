@@ -4,7 +4,6 @@ export const Container = styled.div`
   color: white;
   display: flex;
   gap: 10px;
-  /* height: 20%; */
   justify-content: space-around;
   margin: 0 auto;
   margin-top: -50px;
