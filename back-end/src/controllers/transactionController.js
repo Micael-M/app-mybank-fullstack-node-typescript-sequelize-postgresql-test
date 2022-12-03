@@ -11,7 +11,6 @@ const create = async (req, res) => {
     if (message) return res.status(status).json({ message });
     return res.status(status).json(resultUpdate);
   } catch (err) {
-    console.log(err.message);
     return res.status(SERVER_ERROR).json(SERVER_ERROR_MESSAGE);
   }
 };

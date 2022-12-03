@@ -11,10 +11,8 @@ export const Transaction = ({ data }) => {
 
 
   const handleClick = async ({ target }) => {
-    console.log(target.name);
     setType(target.name);
     await auth.getTransactions(target.name);
-    console.log('cliquei para trazer as transações');
   };
 
   return (

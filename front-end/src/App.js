@@ -6,7 +6,6 @@ import { Register } from "./pages/Register";
 import { Global } from "./styles/global.js";
 
 export const App = () => {
-  console.log('Cheguei no app');
   return (
     <Switch>
       <Route exact path="/" render={() => <RequireAuth ><Home /></RequireAuth>} />

@@ -11,7 +11,6 @@ export const AuthProvider = ({ children }) => {
   const api = useApi();
 
   const tokenValidate = async () => {
-    console.log('No tokenValidate');
     const getStorageToken = JSON.parse(localStorage.getItem('mc_token'));
     const getUserStorage = JSON.parse(localStorage.getItem('mc_user'));
     if (getStorageToken) {
@@ -23,7 +22,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => { 
-    console.log('Rodei useEffect do provider');
     tokenValidate() }, []);
 
   const setIDataInStorage = (key, data) => localStorage.setItem(key, JSON.stringify(data));

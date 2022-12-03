@@ -5,8 +5,6 @@ export const Login = () => {
 
   const auth = useAuth();
 
-  console.log('Cheguei no Login');
-
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [hidden, setHidden] = useState(true);
@@ -20,8 +18,8 @@ export const Login = () => {
   const handleLogin = async () => {
     try {
       if (username && password) {
-        const isLogged = await auth.userLogin(username, password);
-        console.log(isLogged);
+        await auth.userLogin(username, password);
+        return;
       }
     } catch {
       setHidden(false);
