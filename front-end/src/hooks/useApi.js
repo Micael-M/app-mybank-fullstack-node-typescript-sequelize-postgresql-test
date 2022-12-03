@@ -21,9 +21,7 @@ export const useApi = () => ({
   },
 
   getTransactions: async (id, who) => {
-    console.log(id, who);
     const { data } = await api.post('/transactions', {id, who});
-    console.log(data);
     return data;
   },
 
