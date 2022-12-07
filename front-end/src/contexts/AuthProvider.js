@@ -16,7 +16,6 @@ export const AuthProvider = ({ children }) => {
     if (getStorageToken) {
       setUser(getStorageToken);
       setDataUser(getUserStorage);
-      console.log('Cheguei no validate');
       const validateToken = await api.validateToken(getStorageToken);
       validateToken.username ? setUser(validateToken) : setUser(null);
     }

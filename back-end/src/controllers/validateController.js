@@ -4,7 +4,6 @@ const SERVER_ERROR = 500;
 
 const validate = async (req, res) => {
   const { token } = req.body;
-  console.log(token);
   try {
     const { status, message, resultVerify } = await service.validateToken(token);
     if (message) return res.status(200).json({ message });

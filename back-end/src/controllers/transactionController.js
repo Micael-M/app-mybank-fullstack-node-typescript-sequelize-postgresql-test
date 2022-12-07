@@ -17,7 +17,6 @@ const create = async (req, res) => {
 
 const getTransactions = async (req, res) => {
   const { id, who } = req.body;
-  console.log(id, who);
   try {
     const { status, message, transactions } = await service.getTransactions(id, who);
 
