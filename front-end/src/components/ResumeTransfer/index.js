@@ -3,7 +3,7 @@ import { useAuth } from '../../contexts/AuthProvider';
 import * as C from './styles'
 
 export const Transfer = ({ title, type, placeholder, data }) => {
-  const auth = useAuth() // utilizar userLogin()
+  const auth = useAuth() 
   const [amount, setAmount] = useState(0);
   const [creditedName, setCreditedName] = useState('');
 

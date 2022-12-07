@@ -15,6 +15,20 @@ const create = async (req, res) => {
   }
 };
 
+const getTransactions = async (req, res) => {
+  const { id, who } = req.body;
+  console.log(id, who);
+  try {
+    const { status, message, transactions } = await service.getTransactions(id, who);
+
+    if (message) return res.status(status).json({ message });
+    return res.status(status).json(transactions);
+  } catch (err) {
+    return res.status(SERVER_ERROR).json(SERVER_ERROR_MESSAGE);
+  }
+};
+
 module.exports = {
   create,
+  getTransactions,
 };

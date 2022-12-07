@@ -18,6 +18,19 @@ const create = async (dataTransaction) => {
   return { status: 404, menssage: 'User not found!' };
 };
 
+const getTransactions = async (id, who) => {
+  if (who === 'credited') {
+    const transactions = await Transaction.findAll({ where: { creditedAccountId: id } });
+    return { status: 200, transactions };
+  }
+  if (who === 'debited') {
+    const transactions = await Transaction.findAll({ where: { debitedAccountId: id } });
+    return { status: 200, transactions };
+  }
+  return { status: 404, menssage: 'Transactions not found!' };
+};
+
 module.exports = {
   create,
+  getTransactions,
 };

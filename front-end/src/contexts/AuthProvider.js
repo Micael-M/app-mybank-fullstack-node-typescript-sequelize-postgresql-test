@@ -16,8 +16,9 @@ export const AuthProvider = ({ children }) => {
     if (getStorageToken) {
       setUser(getStorageToken);
       setDataUser(getUserStorage);
+      console.log('Cheguei no validate');
       const validateToken = await api.validateToken(getStorageToken);
-      if (validateToken.username) setUser(validateToken);
+      validateToken.username ? setUser(validateToken) : setUser(null);
     }
   };
 
@@ -46,7 +47,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const getTransactions = async (who) => {
-    const resultFindAll = await api.getTransactions(user.id, who);
+    const resultFindAll = await api.getTransactions(dataUser.id, who);
     if (resultFindAll) setTransactions(resultFindAll);
     return resultFindAll;
   };

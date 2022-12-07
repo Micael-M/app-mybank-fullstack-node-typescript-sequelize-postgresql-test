@@ -1,14 +1,11 @@
-import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
-
-// import { AuthProvider } from '../../contexts/AuthProvider';
+import React, { useState } from 'react';
+import { useAuth } from '../../contexts/AuthProvider';
 import { Grid } from '../Grid';
 import * as C from './styles'
 
 export const Transaction = ({ data }) => {
-  const auth = useContext(AuthContext) // utilizar userLogin()
+  const auth = useAuth();
   const [type, setType] = useState('');
-
 
   const handleClick = async ({ target }) => {
     setType(target.name);

@@ -1,16 +1,7 @@
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { App } from './App';
-import { AuthProvider } from './contexts/AuthProvider';
-import { Global } from './styles/global';
+import React from "react";
 
-const root = createRoot(document.querySelector('#root'));
-
-root.render(
-  <AuthProvider>
-    <BrowserRouter>
-      < Global />
-      <App />
-    </BrowserRouter>
-  </AuthProvider>
-);
+export const Register = () => {
+  return (
+    <div>Register</div>
+  )
+}
